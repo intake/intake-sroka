@@ -1,0 +1,22 @@
+language: generic
+os:
+  - linux
+env:
+  matrix:
+    - CONDA_PY=36
+install:
+  - |
+    echo "Installing a fresh version of Miniconda."
+    MINICONDA_URL="https://repo.continuum.io/miniconda"
+    MINICONDA_FILE="Miniconda3-latest-$(case $TRAVIS_OS_NAME in (linux) echo Linux;; (osx) echo MacOSX;;esac)-x86_64.sh"
+    curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+    bash $MINICONDA_FILE -b
+  - |
+    echo "Configuring conda."
+    source $HOME/miniconda3/bin/activate root
+    conda install -y conda-build anaconda-client conda-verify
+script:
+  - pip install -e . --no-deps
+  - pytest -v
+notifications:
+  email: false

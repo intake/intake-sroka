@@ -1,0 +1,12 @@
+name: intake-sroka
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - intake
+  - intake-sroka
+  - pip:
+    - sphinx
+    - sphinx-rtd-theme
+    - numpydoc
