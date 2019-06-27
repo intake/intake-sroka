@@ -1,2 +1,5 @@
 intake
 sroka
+qds-sdk
+google-api-python-client
+google-auth
