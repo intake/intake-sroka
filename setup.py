@@ -18,6 +18,9 @@ setup(
     py_modules=['intake_sroka'],
     packages=find_packages(),
     package_data={'': ['*.csv', '*.yml', '*.html']},
+    entry_points={
+        'intake.drivers': ['athena = intake_sroka.sources:AthenaSource',
+                           'google_analytics = intake_sroka.sources:GASource']},
     include_package_data=True,
     install_requires=requires,
     long_description=open('README.md').read(),
